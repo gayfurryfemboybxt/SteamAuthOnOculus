@@ -1,5 +1,5 @@
 # SteamAuthOnOculus
--# This is a mod targeted towards authenticating with your Steam account on the Rift build of Gorilla Tag
+#- This is a mod targeted towards authenticating with your Steam account on the Rift build of Gorilla Tag
 
 In order for this to work you need to own Gorilla Tag on the Rift store and Steam store
 
