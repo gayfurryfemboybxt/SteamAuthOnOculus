@@ -18,7 +18,7 @@ public class Plugin : BaseUnityPlugin
         hm = new Harmony(MyPluginInfo.PLUGIN_NAME);
         Logger = base.Logger;
         Logger.LogInfo($"Plugin {MyPluginInfo.PLUGIN_GUID} is loaded!");
-        Logger.LogWarning("uhh lowke donteven know if it works, theoretically it should, dont exactly know how to get steam to communicate with the mod yet.");
+        Logger.LogWarning("make sure you follow the tutorial on github! https://github.com/jrvr-cs/SteamAuthOnOculus");
 
         Logger.LogInfo($"tryna make steam txt for auth {Paths.GameRootPath}");
         var path = Path.Combine(Paths.GameRootPath, "steam_appid.txt");
