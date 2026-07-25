@@ -1,14 +1,20 @@
 using System.Collections.Generic;
 using HarmonyLib;
+using SteamAuthOnOculus;
 using UnityEngine;
 
-[HarmonyPatch(typeof(PhotonAuthenticator), "SetCustomAuthenticationParameters")]
-public static class SetCustomAuthenticationParametersPatch
+namespace SteamAuthOnOculus.Patches
 {
-    static bool Prefix(ref Dictionary<string, object> customAuthData)
+    [HarmonyPatch(typeof(PhotonAuthenticator), "SetCustomAuthenticationParameters")]
+    public static class SetCustomAuthenticationParametersPatch
     {
-
-        customAuthData.Remove("Platform"); //steam authenticates with photon without a platform identifier
-        return false;//please we need authenticate steeam!
+        static void Prefix(ref Dictionary<string, object> customAuthData)
+        {
+            customAuthData.Remove("Platform");
+            foreach (KeyValuePair<string, object> vP in customAuthData)
+            {
+                Plugin.Logger.LogInfo($"Key: {vP.Key} Value: {vP.Value}");
+            }
+        }
     }
 }

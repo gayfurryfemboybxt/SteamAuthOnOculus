@@ -17,7 +17,7 @@ namespace SteamAuthOnOculus.Patches
     {
         public static HAuthTicket steamAuthTicketPlayFab = HAuthTicket.Invalid;
         public static HAuthTicket steamAuthTicketPhoton = HAuthTicket.Invalid;
-        public static string steamAuthIdForPhoton = string.Empty;
+        public static string steamAuthIdForPhoton;
         public static PlayFabAuthenticator playfabAuthenticatorInstance;
         public static bool Prefix(PlayFabAuthenticator __instance)
         {
@@ -56,10 +56,11 @@ namespace SteamAuthOnOculus.Patches
                             {
                                 __instance._playFabPlayerIdCache = res.PlayFabId;
                                 __instance._sessionTicket = res.SessionTicket;
+                                 Plugin.Logger.LogInfo($"Logged in with { __instance._playFabPlayerIdCache}! {MothershipClientContext.MothershipId}");
 
                                 __instance.StartCoroutine(__instance.CachePlayFabId(new PlayFabAuthenticator.CachePlayFabIdRequest
                                 {
-                                    Platform = "Steam",
+                                    Platform = __instance.platform.ToString(),
                                     SessionTicket = __instance._sessionTicket,
                                     PlayFabId = __instance._playFabPlayerIdCache,
                                     TitleId = "63FDD",
@@ -77,7 +78,7 @@ namespace SteamAuthOnOculus.Patches
                                         {
                                             __instance.StartCoroutine(__instance.VerifyKidAuthenticated(dT));
                                         }
-                                        Plugin.Logger.LogInfo($"cached ze playfab id");//advance login
+                                        Plugin.Logger.LogInfo($"cached ze playfab id using {res.SteamAuthIdForPhoton}");//advance login
                                         SteamHelper.RefreshSteamAuthTicketForPhoton(__instance, (string ticket) =>
                                         {
                                             __instance._nonce = ticket;
