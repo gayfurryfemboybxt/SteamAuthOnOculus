@@ -122,7 +122,7 @@ namespace SteamAuthOnOculus.Utils
             {
                 steamAuthTicket.Dispose();
             }
-            BeginLogFlowPatch.steamAuthTicketPhoton = GetAuthTicketForWebApi(instance.steamAuthIdForPhoton, successCallback, failureCallback);
+            BeginLogFlowPatch.steamAuthTicketPhoton = GetAuthTicketForWebApi(BeginLogFlowPatch.steamAuthIdForPhoton, successCallback, failureCallback);
         }
     }
 }

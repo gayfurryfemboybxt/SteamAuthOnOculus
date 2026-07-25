@@ -3,6 +3,7 @@ using BepInEx;
 using BepInEx.Logging;
 using HarmonyLib;
 using Steamworks;
+using UnityEngine;
 
 namespace SteamAuthOnOculus;
 
@@ -19,21 +20,25 @@ public class Plugin : BaseUnityPlugin
         Logger.LogInfo($"Plugin {MyPluginInfo.PLUGIN_GUID} is loaded!");
         Logger.LogWarning("uhh lowke donteven know if it works, theoretically it should, dont exactly know how to get steam to communicate with the mod yet.");
 
-        hm.PatchAll();
-    }
-
-    void Start()
-    {
-        //make a steam_appid txt file
+        Logger.LogInfo($"tryna make steam txt for auth {Paths.GameRootPath}");
         var path = Path.Combine(Paths.GameRootPath, "steam_appid.txt");
         try
         {
             if (!File.Exists(path))
             {
-                var steam_appid = File.Create(path);
                 File.WriteAllText(path, "1533390");
             }
         }catch {Logger.LogError("so basically i tried doin it and it ain work");}
+        
         SteamAPI.Init();
+        GameObject ss = new GameObject("JRVR.SteamManager");
+        ss.AddComponent<Utils.SteamManager>();
+        DontDestroyOnLoad(ss);
+
+
+        hm.PatchAll();
     }
+
+    
+
 }

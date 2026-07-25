@@ -8,7 +8,7 @@ If you have ever played Gorilla Tag through SteamVR with Oculus Link you would k
 
 
 # How To Use
-Obviously put the mod in your BepInEx/plugins folder of the Rift build, now with the Steam build go to Gorilla Tag_Data/Plugins and find the steam_api64.dll and paste it into the Rift build Gorilla Tag_Data/Plugins
+Obviously put the mod in your BepInEx/plugins folder of the Rift build, now with the Steam build go to Gorilla Tag_Data/Plugins and find the steam_api64.dll and paste it into the Rift build Gorilla Tag_Data/Plugins, also get the steamworks dll from the Steam build Gorilla Tag_Data/Managed "com.rlabrecque.steamworks.net.dll" and paste it in to the corresponding folder in the rift build
 
 
 Full tutorial for using it will be made, still tweaking

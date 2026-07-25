@@ -29,6 +29,7 @@ namespace SteamAuthOnOculus.Patches
             {
                 Plugin.Logger.LogInfo("starting mothership steam authentication");
                 string nonce = resp.Nonce;
+                Plugin.Logger.LogInfo($"got login with steam nonce! {nonce}");
                 Utils.SteamAuthTicket ticketHand = HAuthTicket.Invalid;
                 ticketHand = SteamHelper.GetAuthTicketForWebApi(nonce, delegate (string ticket)
                 {

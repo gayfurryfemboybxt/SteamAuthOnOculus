@@ -14,10 +14,10 @@ namespace SteamAuthOnOculus.Patches
     [HarmonyPatch(typeof(NetworkSystem), "RefreshNonce")]
     public static class RefreshNoncePatch //AA stripped "RefreshSteamAuthTicketForPhoton" so we cant call it normally
     {
-        static MethodBase TargetMethod()
-        {
-            return AccessTools.Method(typeof(NetworkSystem), "RefreshNonce");
-        }
+        // static MethodBase TargetMethod()
+        // {
+        //     return AccessTools.Method(typeof(NetworkSystem), "RefreshNonce");
+        // }
 
         static bool Prefix(NetworkSystem __instance)
         {
@@ -44,10 +44,10 @@ namespace SteamAuthOnOculus.Patches
     [HarmonyPatch(typeof(NetworkSystem), "ReGetNonce")]
     public static class ReGetNoncePatch
     {
-        static MethodBase TargetMethod()
-        {
-            return AccessTools.Method(typeof(NetworkSystem), "ReGetNonce");
-        }
+        // static MethodBase TargetMethod()
+        // {
+        //     return AccessTools.Method(typeof(NetworkSystem), "ReGetNonce");
+        // }
 
         static bool Prefix(NetworkSystem __instance, ref IEnumerator __result)
         {
