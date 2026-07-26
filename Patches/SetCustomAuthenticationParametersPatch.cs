@@ -10,11 +10,7 @@ namespace SteamAuthOnOculus.Patches
     {
         static void Prefix(ref Dictionary<string, object> customAuthData)
         {
-            customAuthData.Remove("Platform");
-            foreach (KeyValuePair<string, object> vP in customAuthData)
-            {
-                Plugin.Logger.LogInfo($"Key: {vP.Key} Value: {vP.Value}");
-            }
+            customAuthData.Remove("Platform"); // steam has none so just remove it
         }
     }
 }
